@@ -1,0 +1,22 @@
+image: docker:1.12
+services:
+    - docker:dind
+build_image:
+  script:
+    - docker -v
+
+    - docker build -t git@bitbucket.org:stevenprivate/toolbox:php-5.6 php/5.6
+    - docker login -u stevenprivate -p parad1se  git@bitbucket.org:stevenprivate
+    - docker push git@bitbucket.org:stevenprivate/toolbox:php-5.6
+
+    - docker build -t git@bitbucket.org:stevenprivate/toolbox:php-7.0 php/7.0
+    - docker login -u stevenprivate -p parad1se  git@bitbucket.org:stevenprivate
+    - docker push git@bitbucket.org:stevenprivate/toolbox:php-7.0
+
+    - docker build -t git@bitbucket.org:stevenprivate/toolbox:php-7.1 php/7.1
+    - docker login -u stevenprivate -p parad1se  git@bitbucket.org:stevenprivate
+    - docker push git@bitbucket.org:stevenprivate/toolbox:php-7.1
+
+    - docker build -t git@bitbucket.org:stevenprivate/toolbox:php-latest php/latest
+    - docker login -u stevenprivate -p parad1se  git@bitbucket.org:stevenprivate
+    - docker push git@bitbucket.org:stevenprivate/toolbox:php-latest
